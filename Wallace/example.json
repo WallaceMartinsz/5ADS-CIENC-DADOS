@@ -1,0 +1,17 @@
+{
+    "titulo": "Minha Tarefa",
+    "completo": false,
+    "progresso": 85.5,
+    "tags": ["trabalho", "importante"],
+    "detalhes": {
+        "descricao": "Finalizar o projeto de IA",
+        "prazo": "2024-12-31"
+    },
+    "dados": [
+        [1, 2, 3],
+        [4, 5, 6],
+        ["a", "b", "c"]
+    ],
+    "ativo": true,
+    "atributo": null
+}
