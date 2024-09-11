@@ -1,0 +1,38 @@
+import json
+
+def palavra_em_json(caminho_arquivo, palavra):
+    try:
+        # Abrir e ler o arquivo JSON
+        with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+            dados = json.load(arquivo)
+            
+            # Função auxiliar para procurar a palavra em dados
+            def procurar_palavra(dados, palavra):
+                if isinstance(dados, dict):
+                    for chave, valor in dados.items():
+                        if palavra in chave or (isinstance(valor, str) and palavra in valor):
+                            return True
+                        if procurar_palavra(valor, palavra):
+                            return True
+                elif isinstance(dados, list):
+                    for item in dados:
+                        if procurar_palavra(item, palavra):
+                            return True
+                return False
+            
+            # Verificar se a palavra está presente
+            return procurar_palavra(dados, palavra)
+    
+    except FileNotFoundError:
+        print(f"Arquivo não encontrado: {caminho_arquivo}")
+        return False
+    except json.JSONDecodeError:
+        print(f"Erro ao decodificar o arquivo JSON: {caminho_arquivo}")
+        return False
+
+# Exemplo de uso
+caminho = 'exemplo.json'  # Substitua pelo caminho do seu arquivo JSON
+palavra = 'exemplo'       # Substitua pela palavra que você deseja procurar
+
+resultado = palavra_em_json(caminho, palavra)
+print(f"A palavra '{palavra}' {'foi encontrada' if resultado else 'não foi encontrada'} no arquivo JSON.")
