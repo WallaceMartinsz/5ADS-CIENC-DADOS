@@ -8,7 +8,7 @@
 - Gabriel Ferreira
 - José Daniel
 - Júlia Ellen
-- Lukas Kaynnãn
+- Lucas Kaynnãn
 - Wallace Martins
 
 
